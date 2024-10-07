@@ -1,0 +1,39 @@
+.carousel {
+  display: flex;
+}
+
+.carousel-container {
+  overflow: hidden;
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.carousel img {
+  width: 50%;
+  flex-shrink: 0;
+}
+
+.carousel img.selected {
+  border: 2px solid red;
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  .carousel img {
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .carousel img {
+    width: 33.33%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .carousel img {
+    width: 25%;
+  }
+}
