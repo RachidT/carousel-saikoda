@@ -30,7 +30,7 @@ const Carousel: React.FC<CarouselProps> = ({
       <div className="carousel-container">
         <div
           className="carousel-images"
-          style={{ transform: `translateX(${translateX}px)` }} // Translation en pixels
+          style={{ transform: `translateX(${translateX}px)` }}
         >
           {images.map((src, index) => (
             <img
