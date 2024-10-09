@@ -1,23 +1,10 @@
-import MainView from "./components/MainView";
-import Carousel from "./components/Carousel";
+import MainView from "./components/main-view/MainView";
+import Carousel from "./components/carousel/Carousel";
 import { useCarousel } from "./hooks/useCarousel";
-import {
-  luffy,
-  shanks,
-  zoro,
-  sanji,
-  demonSlayer,
-  gojo,
-  pilier,
-  kaiju,
-} from "./assets";
-
-const PRODUCT_DESCRIPTION =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc ultricies ultricies.";
+import { ImagesConfig } from "./config/imagesConfig";
 
 function App() {
-  const images = [luffy, shanks, zoro, sanji, demonSlayer, gojo, pilier, kaiju];
-
+  const images = ImagesConfig.map((item) => item.image);
   const {
     selectedIndex,
     translateX,
@@ -32,7 +19,8 @@ function App() {
     <>
       <MainView
         selectedImage={images[selectedIndex]}
-        productDescription={PRODUCT_DESCRIPTION}
+        imageDescription={ImagesConfig[selectedIndex].description}
+        imageTitle={ImagesConfig[selectedIndex].title}
       />
       <Carousel
         images={images}

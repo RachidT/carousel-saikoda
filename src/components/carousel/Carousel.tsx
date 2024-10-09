@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Carousel.modules.css";
+import "../../styles/Carousel.modules.css";
 
 interface CarouselProps {
   images: string[];
