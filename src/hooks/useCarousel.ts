@@ -47,7 +47,7 @@ export const useCarousel = (images: string[]) => {
   }, [visibleImagesCount]);
 
   const handleNext = () => {
-    if (translateX > -(images.length - visibleImagesCount) * imageWidth) {
+    if (translateX < (images.length - visibleImagesCount) * imageWidth) {
       setTranslateX(translateX - imageWidth);
     }
   };

@@ -12,7 +12,11 @@ const MainView: React.FC<MainViewProps> = ({
 }) => {
   return (
     <div className="main-view">
-      <img src={selectedImage} alt="Selected product" className="main-view" />
+      <img
+        src={selectedImage}
+        alt="Selected product"
+        className="image-container"
+      />
       <div className="main-view-description">
         <p>{productDescription}</p>
       </div>
