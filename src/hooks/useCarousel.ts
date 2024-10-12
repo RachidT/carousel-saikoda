@@ -4,7 +4,7 @@ export const useCarousel = (images: string[]) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [translateX, setTranslateX] = useState(0);
   const [visibleImagesCount, setVisibleImagesCount] = useState(4);
-  const [imageWidth, setImageWidth] = useState(0);
+  const [imageWidth, setImageWidth] = useState(350);
 
   const updateVisibleImagesCount = () => {
     const width = window.innerWidth;
@@ -20,7 +20,12 @@ export const useCarousel = (images: string[]) => {
     );
 
     if (matchingBreakpoint) {
-      setVisibleImagesCount(matchingBreakpoint.images);
+      setVisibleImagesCount((prevCount) => {
+        if (prevCount !== matchingBreakpoint.images) {
+          return matchingBreakpoint.images;
+        }
+        return prevCount;
+      });
     }
   };
 
@@ -28,23 +33,26 @@ export const useCarousel = (images: string[]) => {
     const carouselContainer = document.querySelector(".carousel-container");
     if (carouselContainer) {
       const containerWidth = carouselContainer.clientWidth;
-      setImageWidth(containerWidth / visibleImagesCount);
+      setImageWidth((prevWidth) => {
+        const newWidth = containerWidth / visibleImagesCount;
+        if (prevWidth !== newWidth) {
+          return newWidth;
+        }
+        return prevWidth;
+      });
     }
   };
 
   useEffect(() => {
     updateVisibleImagesCount();
+    updateImageWidth();
     window.addEventListener("resize", updateVisibleImagesCount);
     window.addEventListener("resize", updateImageWidth);
     return () => {
       window.removeEventListener("resize", updateVisibleImagesCount);
       window.removeEventListener("resize", updateImageWidth);
     };
-  }, [visibleImagesCount]);
-
-  useEffect(() => {
-    updateImageWidth();
-  }, [visibleImagesCount]);
+  }, [visibleImagesCount, imageWidth]);
 
   const handleNext = () => {
     if (translateX < (images.length - visibleImagesCount) * imageWidth) {
