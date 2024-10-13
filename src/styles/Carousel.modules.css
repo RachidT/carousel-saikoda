@@ -1,5 +1,8 @@
 .carousel {
   display: flex;
+  position: relative;
+  align-items: center;
+  margin: 0 5rem;
 }
 
 .carousel-container {
@@ -19,10 +22,34 @@
 }
 
 .carousel img.selected {
-  border: 0.125remx solid red;
   opacity: 1;
   transform: scale(1.1);
   z-index: 2;
+}
+
+.carousel-buttons {
+  position: absolute;
+  z-index: 2;
+  font-size: 4rem;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  & svg {
+    fill: white;
+    border-radius: 50%;
+    background-color: black;
+  }
+}
+
+.prev-button {
+  left: 5%;
+}
+
+.next-button {
+  right: 5%;
 }
 
 @media (min-width: 480px) and (max-width: 768px) {

@@ -12,7 +12,9 @@ function App() {
     handlePrev,
     selectImage,
     visibleImagesCount,
-    imageWidth,
+    carouselContainerRef,
+    isPrevButtonDisabled,
+    isNextButtonDisabled,
   } = useCarousel(images);
 
   return (
@@ -30,7 +32,9 @@ function App() {
         handlePrev={handlePrev}
         translateX={translateX}
         visibleImagesCount={visibleImagesCount}
-        imageWidth={imageWidth}
+        carouselContainerRef={carouselContainerRef}
+        isPrevButtonDisabled={isPrevButtonDisabled}
+        isNextButtonDisabled={isNextButtonDisabled}
       />
     </>
   );
